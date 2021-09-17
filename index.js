@@ -37,7 +37,7 @@ client.on("message", async message => {
         list(message, serverQueue);
         return;
     } else if (message.content.startsWith(`${prefix}help`)) {
-        list(message, serverQueue);
+        help(message, serverQueue);
         return;
     } else {
         message.channel.send("You need to enter a valid command! Type #help for commands");
