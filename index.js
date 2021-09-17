@@ -145,10 +145,10 @@ function list(message, serverQueue) {
 function help(message, serverQueue) {
     var helpMessage = "**List of Commands for ScooterJam**\n";
     helpMessage += "All commands are prefixed with a **#**\n";
-    helpMessage += "**1** #play {youtube url} - Adds the song to the song list";
-    helpMessage += "**2** #skip - Skips the currently playing song";
-    helpMessage += "**3** #stop - Stops playing the song and clears the list";
-    helpMessage += "**4** #list - Lists all the songs in the playlist";
+    helpMessage += "**1** #play {youtube url} - Adds the song to the song list\n";
+    helpMessage += "**2** #skip - Skips the currently playing song\n";
+    helpMessage += "**3** #stop - Stops playing the song and clears the list\n";
+    helpMessage += "**4** #list - Lists all the songs in the playlist\n";
     return message.channel.send(helpMessage);
 }
 
