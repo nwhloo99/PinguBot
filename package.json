@@ -1,0 +1,18 @@
+{
+  "name": "pingubot",
+  "version": "1.0.0",
+  "description": "music bot for discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.6.0",
+    "discord.js": "^12.5.3",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "ytdl-core": "^4.9.1"
+  }
+}
