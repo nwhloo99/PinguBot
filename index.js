@@ -53,6 +53,12 @@ async function execute(message, serverQueue) {
     );
   }
 
+  if (args[1] == undefined || args[1] == "") {
+      return message.channel.send(
+          "Please enter a valid url!"
+      );
+  }
+
   const songInfo = await ytdl.getInfo(args[1]);
   const song = {
         title: songInfo.videoDetails.title,
