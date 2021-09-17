@@ -33,6 +33,9 @@ client.on("message", async message => {
     } else if (message.content.startsWith(`${prefix}stop`)) {
         stop(message, serverQueue);
         return;
+    } else if (message.content.startsWith(`${prefix}list`)) {
+        list(message, serverQueue);
+        return;
     } else {
         message.channel.send("You need to enter a valid command!");
     }
@@ -107,17 +110,33 @@ function skip(message, serverQueue) {
 }
 
 function stop(message, serverQueue) {
-    if (!message.member.voice.channel) {
+    if (!message.member.voice.channel)
         return message.channel.send(
             "You have to be in a voice channel to stop the music!"
         );
-    }
 
     if (!serverQueue)
         return message.channel.send("There is no song that I could stop!");
     
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
+}
+
+function list(message, serverQueue) {
+    if (!message.member.voice.channel)
+        return message.channel.send(
+            "You have to be in a voice channel to list the music!"
+        );
+
+    if (!serverQueue)
+        return message.channel.send("The song queue is empty!");
+
+    return serverQueue.songs.forEach((song, index) => {
+        const songNumber = index == 0 ? "Now Playing" : index;
+        message.channel.send(
+            `**${songNumber}:** ${song.title}`
+        )
+    }); 
 }
 
 function play(guild, song) {
