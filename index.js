@@ -149,7 +149,7 @@ function help(message, serverQueue) {
     helpMessage += "**2** #skip - Skips the currently playing song";
     helpMessage += "**3** #stop - Stops playing the song and clears the list";
     helpMessage += "**4** #list - Lists all the songs in the playlist";
-    return message.channel.send("");
+    return message.channel.send(helpMessage);
 }
 
 function play(guild, song) {
