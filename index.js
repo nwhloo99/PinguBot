@@ -36,8 +36,11 @@ client.on("message", async message => {
     } else if (message.content.startsWith(`${prefix}list`)) {
         list(message, serverQueue);
         return;
+    } else if (message.content.startsWith(`${prefix}help`)) {
+        list(message, serverQueue);
+        return;
     } else {
-        message.channel.send("You need to enter a valid command!");
+        message.channel.send("You need to enter a valid command! Type #help for commands");
     }
 });
 
@@ -137,6 +140,16 @@ function list(message, serverQueue) {
             `**${songNumber}:** ${song.title}`
         )
     }); 
+}
+
+function help(message, serverQueue) {
+    var helpMessage = "**List of Commands for ScooterJam**\n";
+    helpMessage += "All commands are prefixed with a **#**\n";
+    helpMessage += "**1** #play {youtube url} - Adds the song to the song list";
+    helpMessage += "**2** #skip - Skips the currently playing song";
+    helpMessage += "**3** #stop - Stops playing the song and clears the list";
+    helpMessage += "**4** #list - Lists all the songs in the playlist";
+    return message.channel.send("");
 }
 
 function play(guild, song) {
