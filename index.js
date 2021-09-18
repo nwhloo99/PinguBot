@@ -30,19 +30,20 @@ client.once("disconnect", () => {
 });
 
 client.on("message", async message => {
-    if (message.author.bot) return;
-    if (!message.content.startsWith(prefix)) return;
+    if ((message.author.bot) || (!message.content.startsWith(prefix))) return;
 
     const serverQueue = queue.get(message.guild.id);
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) 
+    if (!client.commands.has(commandName)) 
         return message.channel.send("You need to enter a valid command! Type #help for commands");
 
+    const command = client.commands.get(commandName);
+
     try {
-        client.commands.get(command).execute(message, serverQueue, queue);
+        command.execute(message, serverQueue, queue);
     } catch (err) {
         console.error(err);
         message.reply('There was an error trying to execute the command');
