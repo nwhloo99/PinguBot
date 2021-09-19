@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 const { prefix, token } = require("./config.json");
 const ytdl = require("ytdl-core");
 const fs = require('fs');
+const { Songs } = require('./dbObjecs');
+const { Op } = require('sequelize');
+const songlist = new Discord.Collection();
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -19,6 +22,8 @@ const queue = new Map();
 const playlists = new Map();
 
 client.once("ready", () => {
+    const songs = await Songs.findAll();
+    songs.forEach(s => songlist.set(b.name, b));
     console.log("Ready!");
 });
 
