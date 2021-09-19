@@ -1,7 +1,7 @@
 module.exports = {
     name: 'help',
     description: 'Help!',
-    execute(message, serverQueue, queue) {
+    execute(message, serverQueue, queue, playlists) {
         var helpMessage = "**List of Commands for ScooterJam**\n";
         helpMessage += "All commands are prefixed with a **#**\n";
         helpMessage += "**1** #play {youtube url} - Adds the song to the song list\n";

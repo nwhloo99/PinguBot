@@ -16,6 +16,7 @@ for (const file of commandFiles) {
 }
 
 const queue = new Map();
+const playlists = new Map();
 
 client.once("ready", () => {
     console.log("Ready!");
@@ -43,7 +44,7 @@ client.on("message", async message => {
     const command = client.commands.get(commandName);
 
     try {
-        command.execute(message, serverQueue, queue);
+        command.execute(message, serverQueue, queue, playlists);
     } catch (err) {
         console.error(err);
         message.reply('There was an error trying to execute the command');

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'list',
     description: 'List!',
-    execute(message, serverQueue, queue) {
+    execute(message, serverQueue, queue, playlists) {
         if (!message.member.voice.channel)
         return message.channel.send(
             "You have to be in a voice channel to list the music!"
