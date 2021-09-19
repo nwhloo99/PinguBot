@@ -3,7 +3,7 @@ const ytdl = require("ytdl-core");
 module.exports = {
     name: 'play',
     description: 'Play!',
-    async execute (message, serverQueue, queue, playlists) {
+    async execute (message, serverQueue, queue, playlists, songlist) {
         const args = message.content.split(" ");
 
         const voiceChannel = message.member.voice.channel;

@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { prefix, token } = require("./config.json");
 const ytdl = require("ytdl-core");
 const fs = require('fs');
-const { Songs } = require('./dbObjecs');
+const { Songs } = require('./dbObjects');
 const { Op } = require('sequelize');
 const songlist = new Discord.Collection();
 
@@ -21,9 +21,9 @@ for (const file of commandFiles) {
 const queue = new Map();
 const playlists = new Map();
 
-client.once("ready", () => {
+client.once("ready", async () => {
     const songs = await Songs.findAll();
-    songs.forEach(s => songlist.set(b.name, b));
+    songs.forEach(s => songlist.set(s.name, s));
     console.log("Ready!");
 });
 
@@ -49,7 +49,7 @@ client.on("message", async message => {
     const command = client.commands.get(commandName);
 
     try {
-        command.execute(message, serverQueue, queue, playlists);
+        command.execute(message, serverQueue, queue, playlists, songlist);
     } catch (err) {
         console.error(err);
         message.reply('There was an error trying to execute the command');

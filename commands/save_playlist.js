@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
     name: 'save_playlist',
     description: 'Save Playlist!',
-    execute(message, serverQueue, queue, playlists) {
+    execute(message, serverQueue, queue, playlists, songlist) {
         if (!message.member.voice.channel)
         return message.channel.send(
             "You have to be in a voice channel to list the music!"

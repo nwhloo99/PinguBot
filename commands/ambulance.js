@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
     name: "ambulance",
     description: "Call an ambulance!",
-    async execute(message, serverQueue, queue, playlists) {
+    async execute(message, serverQueue, queue, playlists, songlist) {
         const voiceChannel = message.member.voice.channel;
         if (!voiceChannel)
             return message.channel.send(

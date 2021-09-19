@@ -1,7 +1,7 @@
 module.exports = {
     name: 'skip',
     description: 'Skip!',
-    execute(message, serverQueue, queue, playlists) {
+    execute(message, serverQueue, queue, playlists, songlist) {
         if (!message.member.voice.channel)
         return message.channel.send(
             "You have to be in a voice channel to stop the music!"
